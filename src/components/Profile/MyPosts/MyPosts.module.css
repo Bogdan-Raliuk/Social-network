@@ -1,0 +1,16 @@
+.main{
+	padding: 10px;
+}
+.posts{
+	padding: 10px;
+}
+textarea{
+	resize: vertical;
+	width: 400px;
+	max-height: 200px;
+	min-height: 100px;
+}
+.error{
+	color: rgb(255, 153, 57);
+	font-size: 20px;
+}

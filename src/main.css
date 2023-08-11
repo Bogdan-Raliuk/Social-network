@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+}
+
+.app-wraper{
+	width: 100%;
+	display: grid;
+	grid-template-areas:
+	"h h"
+	"n c";
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 1fr 10fr;
+	grid-gap: 5px;
+	background-color: #000000;
+}
+img{
+	user-select: none;
+}
+.app-wraper-content{
+	grid-area: c;
+	background-color: #086;
+}

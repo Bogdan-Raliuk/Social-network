@@ -1,0 +1,31 @@
+.dialogs{
+	display: grid;
+	grid-template-columns: 2fr 10fr;
+}
+
+.dialogs_items{
+	padding: 10px;
+	display: inline-block;
+}
+.dialogs_items .active{
+	color:gold;
+}
+
+.dialogs_items .dialog{
+	color: #fff;
+}
+.messages{
+	padding: 10px;
+	display: inline-block;
+}
+.messages .message{
+	color: #fff;
+}
+.btn{
+	width: 100px;
+	height: 35px;
+}
+.error{
+	color: rgb(255, 153, 57);
+	font-size: 20px;
+}

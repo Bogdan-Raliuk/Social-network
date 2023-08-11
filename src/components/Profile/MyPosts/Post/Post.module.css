@@ -1,0 +1,10 @@
+.item{
+	color: #fdaa4b;
+}
+.item img{
+	width: 50px;
+	cursor: pointer;
+}
+.main{
+	margin: 10px;
+}

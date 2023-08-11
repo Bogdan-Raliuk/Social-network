@@ -1,0 +1,11 @@
+.selected {
+    color: gold;
+}
+
+.pageLink {
+    cursor: pointer;
+    font-size: 26px;
+    margin: 0 10px;
+    user-select: none;
+    border: 1px solid #222;
+}
