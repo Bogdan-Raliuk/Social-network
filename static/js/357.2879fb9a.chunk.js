@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkthe_way_of_the_samurai=self.webpackChunkthe_way_of_the_samurai||[]).push([[357],{2357:function(e,t,a){a.r(t);a(2791);var u=a(184);t.default=function(e){return(0,u.jsx)("div",{children:"Settings"})}}}]);
+//# sourceMappingURL=357.2879fb9a.chunk.js.map
