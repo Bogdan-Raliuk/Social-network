@@ -1,2 +1,2 @@
 # Social-network
-https://bogdan-raliuk.github.io/Social-network/#/profile
+https://bogdan-raliuk.github.io/Social-network
