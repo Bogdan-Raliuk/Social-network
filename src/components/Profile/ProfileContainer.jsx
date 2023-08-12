@@ -24,13 +24,24 @@ function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
-	componentDidMount() {
+	refreshProfile() {
 		let userID = this.props.router.params.userID;
 		if (!userID) {
 			userID = this.props.myProfileID;
 		}
 		this.props.getUserProfile(userID);
 		this.props.getStatus(userID);
+	}
+
+	componentDidMount() {
+		this.refreshProfile();
+	}
+
+	componentDidUpdate(prevProps) {
+		const currentUserID = this.props.router.params.userID;
+		if (prevProps.router.params.userID !== currentUserID) {
+			this.refreshProfile();
+		}
 	}
 
 	render() {
