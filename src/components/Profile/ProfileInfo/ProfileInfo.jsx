@@ -3,6 +3,12 @@ import style from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
 
 function ProfileInfo(props) {
+	const onSelectPhoto = (e) => {
+		if (e.target.files.length) {
+			props.savePhoto(e.target.files[0]);
+		}
+	};
+
 	return (
 		<main>
 			<img
@@ -14,6 +20,12 @@ function ProfileInfo(props) {
 				alt="main"
 				className={style.background_photo}
 			/>
+			{props.isOwner && (
+				<input
+					type="file"
+					onChange={onSelectPhoto}
+				/>
+			)}
 			<br />
 			<div className={style.description_block}>
 				<img

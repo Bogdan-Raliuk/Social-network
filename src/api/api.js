@@ -15,10 +15,6 @@ export const userAPI = {
 			.then((response) => response.data);
 	},
 
-	getUserProfile(userID) {
-		return profileAPI.getUserProfile(userID);
-	},
-
 	follow(userId) {
 		return instance
 			.post(`follow/${userId}`, {})
@@ -40,7 +36,16 @@ export const profileAPI = {
 		return instance.get(`profile/status/${userID}`);
 	},
 	updateStatus(status) {
-		return instance.put(`/profile/status`, { status: status });
+		return instance.put(`profile/status`, { status: status });
+	},
+	savePhoto(photo) {
+		const formData = new FormData();
+		formData.append("image", photo);
+		return instance.put(`profile/photo`, formData, {
+			headers: {
+				"Content-Type": "multipart/form-data",
+			},
+		});
 	},
 };
 
