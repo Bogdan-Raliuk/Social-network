@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import loadingSVG from "../../../assets/images/loading.svg";
 
-function PreloaderChildren(props) {
+function PreloaderChild(props) {
 	return (
 		<>
 			{props.isFetching ? (
@@ -28,5 +28,5 @@ const mapStateToProps = (state) => ({
 	isFetching: state.usersPage.isFetching,
 });
 
-export default connect(mapStateToProps, null)(PreloaderChildren);
+export default connect(mapStateToProps, null)(PreloaderChild);
 connect(mapStateToProps, null)(Preloader);

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import { getUsers, follow, unfollow } from "../../redux/usersReducer";
-import Preloader from "../common/preloader/preloader";
+import PreloaderChild from "../common/preloader/preloader";
 import { compose } from "redux";
 import {
 	getCurrentPage,
@@ -23,12 +23,12 @@ class UsersAPIComponent extends React.Component {
 
 	render() {
 		return (
-			<Preloader>
+			<PreloaderChild>
 				<Users
 					{...this.props}
 					onPageChanged={this.onPageChanged.bind(this)}
 				/>
-			</Preloader>
+			</PreloaderChild>
 		);
 	}
 }
