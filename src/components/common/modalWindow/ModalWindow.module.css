@@ -1,0 +1,22 @@
+.modal{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+.modalContent{
+	position: fixed;
+	left: 250px;
+	right: 250px;
+	top: 150px;
+	bottom: 350px;
+	background-color: rgba(200, 255, 240, 0.8);
+	text-align: justify;
+	padding-left: 100px;
+	padding-top: 100px;
+}
