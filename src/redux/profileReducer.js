@@ -39,7 +39,7 @@ function profileReducer(state = initialState, action) {
 		case SET_USER_PROFILE: {
 			return {
 				...state,
-				profile: action.profile,
+				profile: { ...state.profile, ...action.profile },
 			};
 		}
 		case SET_USER_PHOTO: {
@@ -95,6 +95,12 @@ export const savePhoto = (photo) => async (dispatch) => {
 	const response = await profileAPI.savePhoto(photo);
 	if (response.data.resultCode === 0) {
 		dispatch(setUserPhoto(response.data.data.photos));
+	}
+};
+export const saveProfile = (profile) => async (dispatch) => {
+	const response = await profileAPI.saveProfile(profile);
+	if (response.data.resultCode === 0) {
+		dispatch(setUserProfile(profile));
 	}
 };
 

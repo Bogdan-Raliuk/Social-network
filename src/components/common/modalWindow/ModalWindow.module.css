@@ -8,15 +8,21 @@
 	display: grid;
 	justify-content: center;
 	align-items: center;
+	user-select: none;
 }
 .modalContent{
 	position: fixed;
-	left: 250px;
-	right: 250px;
+	left: 15%;
+	right: 30%;
 	top: 150px;
 	bottom: 350px;
 	background-color: rgba(200, 255, 240, 0.8);
 	text-align: justify;
 	padding-left: 100px;
 	padding-top: 100px;
+	border-radius: 10px;
+
+}
+.btn{
+	cursor: pointer;
 }

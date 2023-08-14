@@ -5,9 +5,17 @@ import ModalWindow from "../../common/modalWindow/ModalWindow";
 
 function ProfileInfo(props) {
 	const [active, setActive] = useState(false);
+	const [editMode, setEditMode] = useState(false);
 
 	const onClose = () => {
 		setActive(false);
+	};
+	const EditModeActive = () => {
+		setEditMode(true);
+	};
+	const EditModeDontActive = (data) => {
+		props.saveProfile(data);
+		setEditMode(false);
 	};
 
 	const onSelectPhoto = (e) => {
@@ -63,11 +71,20 @@ function ProfileInfo(props) {
 				</h3>
 
 				<section>
-					<button onClick={() => setActive(true)}>About me</button>
+					<button
+						className={style.aboutMeBtn}
+						onClick={() => setActive(true)}>
+						About me
+					</button>
 					{active ? (
 						<ModalWindow
+							profile={props.profile}
+							editMode={editMode}
+							isOwner={props.isOwner}
 							onClose={onClose}
-							title="About me:">
+							title="About me:"
+							EditModeActive={EditModeActive}
+							EditModeDontActive={EditModeDontActive}>
 							<p>
 								lookingForAJob:{" "}
 								{props.profile.lookingForAJob ? "yes" : "no"}
@@ -83,94 +100,21 @@ function ProfileInfo(props) {
 								)}
 							</p>
 							<h3>Contacts:</h3>
-							<p>
-								<b>github:</b>
-								{props.profile.contacts.github ? (
-									<a
-										href={`https://${props.profile.contacts.github}`}>
-										{props.profile.contacts.github}
-									</a>
-								) : (
-									"no"
+							<div>
+								{Object.keys(props.profile.contacts).map(
+									(key) => {
+										return (
+											<Contacts
+												key={key}
+												contactTitle={key}
+												contactValues={
+													props.profile.contacts[key]
+												}
+											/>
+										);
+									}
 								)}
-							</p>
-							<p>
-								<b>vk:</b>
-								{props.profile.contacts.vk ? (
-									<a
-										href={`https://${props.profile.contacts.vk}`}>
-										{props.profile.contacts.vk}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>facebook:</b>
-								{props.profile.contacts.facebook ? (
-									<a
-										href={`https://${props.profile.contacts.facebook}`}>
-										{props.profile.contacts.facebook}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>instagram:</b>
-								{props.profile.contacts.instagram ? (
-									<a
-										href={`https://${props.profile.contacts.instagram}`}>
-										{props.profile.contacts.instagram}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>twitter:</b>
-								{props.profile.contacts.twitter ? (
-									<a
-										href={`${props.profile.contacts.twitter}`}>
-										{props.profile.contacts.twitter}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>website:</b>
-								{props.profile.contacts.website ? (
-									<a
-										href={`${props.profile.contacts.website}`}>
-										{props.profile.contacts.website}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>youtube:</b>
-								{props.profile.contacts.youtube ? (
-									<a
-										href={`${props.profile.contacts.youtube}`}>
-										{props.profile.contacts.youtube}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
-							<p>
-								<b>mainLink:</b>
-								{props.profile.contacts.mainLink ? (
-									<a
-										href={`${props.profile.contacts.mainLink}`}>
-										{props.profile.contacts.mainLink}
-									</a>
-								) : (
-									"no"
-								)}
-							</p>
+							</div>
 						</ModalWindow>
 					) : (
 						""
@@ -180,5 +124,14 @@ function ProfileInfo(props) {
 		</main>
 	);
 }
+
+const Contacts = ({ contactTitle, contactValues }) => {
+	return (
+		<p className={style.contacts}>
+			<b>{contactTitle}:</b>
+			{contactValues ? <a href={contactValues}>{contactValues}</a> : "no"}
+		</p>
+	);
+};
 
 export default ProfileInfo;
