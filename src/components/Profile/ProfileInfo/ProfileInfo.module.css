@@ -1,13 +1,14 @@
 .background_photo{
 	width: 400px;
 	height: 300px;
-	border-radius: 7px;
+	border-radius: 0 0 7px 7px;
 }
-
 .profile_image{
 	width: 100px;
 	border-radius: 10px;
+	margin-left: 10px;
 }
+
 .description_block{
 	padding: 10px;
 }
@@ -17,4 +18,11 @@
 }
 .contacts{
 	padding-left: 10px;
+	padding-top: 3px;
+}
+.jobDescription{
+	padding: 5px;
+}
+.selectPhoto{
+	margin-left: 10px;
 }

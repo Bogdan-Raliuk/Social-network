@@ -104,10 +104,11 @@ export const saveProfile = (profile) => async (dispatch) => {
 	}
 };
 
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status) => async (dispatch, getState) => {
+	const userID = getState().auth.id;
 	const response = await profileAPI.updateStatus(status);
 	if (response.data.resultCode === 0) {
-		dispatch(setStatus(status));
+		dispatch(getUserProfile(userID));
 	}
 };
 

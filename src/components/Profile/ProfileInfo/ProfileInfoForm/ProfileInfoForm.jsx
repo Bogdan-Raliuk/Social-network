@@ -3,16 +3,20 @@ import style from "./../../../common/modalWindow/ModalWindow.module.css";
 import { useForm } from "react-hook-form";
 
 const ProfileInfoForm = ({ onClose, onSave, profile }) => {
-	const [lookingForAJob, setLookingForAJob] = useState(true);
-	const {
-		register,
-		handleSubmit,
-		watch,
-		formState: { isValid, errors, isDirty },
-	} = useForm();
+	const [lookingForAJob, setLookingForAJob] = useState(
+		profile.lookingForAJob
+	);
+	const { register, handleSubmit } = useForm({
+		defaultValues: {
+			fullName: profile.fullName,
+			lookingForAJob: profile.lookingForAJob,
+			lookingForAJobDescription: profile.lookingForAJobDescription,
+			aboutMe: profile.aboutMe,
+			contacts: profile.contacts,
+		},
+	});
 
 	const onSubmit = (data) => {
-		alert(JSON.stringify(data));
 		onSave(data);
 	};
 	const lookingForAJobChange = () => {
@@ -35,9 +39,8 @@ const ProfileInfoForm = ({ onClose, onSave, profile }) => {
 						lookingForAJob:
 						<input
 							{...register("lookingForAJob")}
-							onClick={lookingForAJobChange}
 							type="checkbox"
-							checked={lookingForAJob}
+							onClick={lookingForAJobChange}
 						/>
 						{lookingForAJob ? (
 							<>
@@ -56,7 +59,27 @@ const ProfileInfoForm = ({ onClose, onSave, profile }) => {
 							{...register("aboutMe")}
 						/>
 					</div>
+					<div>
+						{Object.keys(profile.contacts).map((key) => {
+							return (
+								<div key={key}>
+									<b>{key}</b>
+									<input
+										{...register(`contacts.${key}`)}
+										placeholder={key}
+										className={style.input}
+										type="text"
+									/>
+								</div>
+							);
+						})}
+					</div>
 					<footer className={style.footer}>
+						<button
+							onClick={onClose}
+							className={style.btn}>
+							close
+						</button>
 						<button className={style.btn}>save</button>
 					</footer>
 				</div>

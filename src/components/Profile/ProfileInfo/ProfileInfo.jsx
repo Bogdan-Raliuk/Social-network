@@ -9,6 +9,7 @@ function ProfileInfo(props) {
 
 	const onClose = () => {
 		setActive(false);
+		setEditMode(false);
 	};
 	const EditModeActive = () => {
 		setEditMode(true);
@@ -48,6 +49,7 @@ function ProfileInfo(props) {
 			<br />
 			{props.isOwner && (
 				<input
+					className={style.selectPhoto}
 					type="file"
 					onChange={onSelectPhoto}
 				/>
@@ -89,8 +91,9 @@ function ProfileInfo(props) {
 								lookingForAJob:{" "}
 								{props.profile.lookingForAJob ? "yes" : "no"}
 								{props.profile.lookingForAJob && (
-									<div>
+									<div className={style.jobDescription}>
 										<b>
+											skills:{" "}
 											{
 												props.profile
 													.lookingForAJobDescription
