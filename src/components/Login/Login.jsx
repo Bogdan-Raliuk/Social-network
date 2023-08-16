@@ -43,6 +43,31 @@ function Login(props) {
 							</p>
 						)}
 					</div>
+				) : errors?.captcha?.message ? (
+					<div>
+						{errors?.captcha && (
+							<p className={style.error}>
+								{errors.captcha.message || "error"}
+							</p>
+						)}
+					</div>
+				) : (
+					""
+				)}
+
+				{props.captchaURL ? (
+					<>
+						<img
+							src={props.captchaURL}
+							alt="captcha"
+						/>
+						<input
+							{...register("captcha", {
+								required: "Обязательное поле ввода",
+							})}
+							placeholder="captcha"
+						/>
+					</>
 				) : (
 					""
 				)}
@@ -84,6 +109,7 @@ const mapStateToProps = (state) => {
 	return {
 		isAuth: state.auth.isAuth,
 		error: state.auth.error,
+		captchaURL: state.auth.captchaURL,
 	};
 };
 
