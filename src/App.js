@@ -1,6 +1,6 @@
 //GLobal imports
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
 import "./main.css";
 //Components
@@ -43,8 +43,12 @@ class App extends React.Component {
 							}>
 							<Routes>
 								<Route
+									path="*"
+									element={<div>404 page not found</div>}
+								/>
+								<Route
 									path=""
-									element={<ProfileContainer />}
+									element={<Navigate to={"/profile"} />}
 								/>
 								<Route
 									path="/profile/:userID?"
