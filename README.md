@@ -1,2 +1,1 @@
-# Social-network
-https://bogdan-raliuk.github.io/Social-network
+[Social-network](https://bogdan-raliuk.github.io/Social-network)
